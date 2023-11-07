@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/bg_layout.xml" value="0.194" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/circle_bg.xml" value="0.194" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/gradient_layout.xml" value="0.195" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/ic_add_close.xml" value="0.1115" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/ic_add_square.xml" value="0.195" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/ic_add_to_cart.xml" value="0.196" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/ic_close_circle.xml" value="0.1115" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1315" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/activity_splaash_screen.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/card_items.xml" value="0.5803858520900321" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/cart_items.xml" value="0.22" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/category_items.xml" value="0.33" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/content_splaash_screen.xml" value="0.2" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/favorite_item_list.xml" value="0.33" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/fragment_card.xml" value="0.25" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/fragment_cart.xml" value="0.25" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/fragment_favorite.xml" value="0.40185185185185185" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/fragment_first.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/fragment_product_list.xml" value="0.37604166666666666" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/product_items.xml" value="0.33" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/select_category_items.xml" value="0.33" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/layout/select_category_list.xml" value="0.33" />
+        <entry key="..\:/Users/gupta/OneDrive/Desktop/shoppingdemo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1315" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
