@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.productListFragment)
-
         // Check if the current fragment is the home screen
         if (currentFragment is ProductListFragment) {
             // If on the home screen, finish the activity (close the app)
