@@ -11,7 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.shoppingdemo.R
 import com.example.shoppingdemo.database.DBHelper
 import com.example.shoppingdemo.databinding.CartItemsBinding
-import com.example.shoppingdemo.model.CartItem
+import com.example.shoppingdemo.data.CartItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

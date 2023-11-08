@@ -2,7 +2,7 @@ package com.example.shoppingdemo.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.shoppingdemo.model.CartItem
+import com.example.shoppingdemo.data.CartItem
 
 @Dao
 interface CartDao : BaseDao<CartItem> {

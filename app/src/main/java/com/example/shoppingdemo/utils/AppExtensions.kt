@@ -1,4 +1,4 @@
-package com.example.shoppingdemo
+package com.example.shoppingdemo.utils
 
 import android.view.View
 

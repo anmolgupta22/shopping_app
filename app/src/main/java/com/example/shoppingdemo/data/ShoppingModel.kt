@@ -1,4 +1,4 @@
-package com.example.shoppingdemo.model
+package com.example.shoppingdemo.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

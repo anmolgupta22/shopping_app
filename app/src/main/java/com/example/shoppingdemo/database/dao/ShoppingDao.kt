@@ -2,8 +2,7 @@ package com.example.shoppingdemo.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.shoppingdemo.model.Items
-import com.example.shoppingdemo.model.Product
+import com.example.shoppingdemo.data.Product
 
 @Dao
 interface ShoppingDao : BaseDao<Product> {

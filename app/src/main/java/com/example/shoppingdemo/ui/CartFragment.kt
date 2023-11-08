@@ -8,13 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingdemo.R
-import com.example.shoppingdemo.ShoppingViewModel
-import com.example.shoppingdemo.ShoppingViewModelFactory
+import com.example.shoppingdemo.viewmodel.ShoppingViewModel
+import com.example.shoppingdemo.viewmodel.ShoppingViewModelFactory
 import com.example.shoppingdemo.adapter.CartAdapter
 import com.example.shoppingdemo.database.DBHelper
 import com.example.shoppingdemo.database.ShoppingRepository
@@ -30,7 +29,7 @@ class CartFragment : Fragment(), CartAdapter.TotalPriceCount {
     private val binding get() = _binding!!
     private var cartAdapter: CartAdapter? = null
     private lateinit var navHostFragment: NavHostFragment
-    private var viewModel: ShoppingViewModel? = null
+    private lateinit var viewModel: ShoppingViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,14 +41,14 @@ class CartFragment : Fragment(), CartAdapter.TotalPriceCount {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val cartDao = DBHelper.getInstance(requireContext()).cartDao()
         val favoriteDao = DBHelper.getInstance(requireContext()).favoriteDao()
         val shoppingDao = DBHelper.getInstance(requireContext()).shoppingDao()
         val repository = ShoppingRepository(cartDao, favoriteDao, shoppingDao)
+
         viewModel = ViewModelProvider(this,
             ShoppingViewModelFactory(repository))[ShoppingViewModel::class.java]
-        val viewModel: ShoppingViewModel by viewModels()
-
 
         navHostFragment = requireActivity().supportFragmentManager.findFragmentById(
             R.id.nav_graph_host_fragment
@@ -66,6 +65,7 @@ class CartFragment : Fragment(), CartAdapter.TotalPriceCount {
             setHasFixedSize(true)
         }
 
+        // set cart data to adapter
         CoroutineScope(Dispatchers.IO).launch {
             val cartItem = viewModel.fetchAllCart()
             CoroutineScope(Dispatchers.Main).launch {
@@ -79,10 +79,12 @@ class CartFragment : Fragment(), CartAdapter.TotalPriceCount {
             }
         }
 
+        // back to previous fragment
         binding.backBtn.setOnClickListener {
             navHostFragment.navController.navigateUp()
         }
 
+        // checkout feature coming soon
         binding.checkOut.setOnClickListener {
             Toast.makeText(
                 context,
@@ -92,20 +94,18 @@ class CartFragment : Fragment(), CartAdapter.TotalPriceCount {
         }
     }
 
+    // update the total and discount price in cart
     @SuppressLint("SetTextI18n")
     override fun onClicked() {
         CoroutineScope(Dispatchers.IO).launch {
-            val subTotal = viewModel?.fetchPriceItemCart()
+            val subTotal = viewModel.fetchPriceItemCart()
             CoroutineScope(Dispatchers.Main).launch {
                 Log.d(TAG, "onClicked: clicked $subTotal")
                 binding.subTotal.text = subTotal.toString()
                 // discount 20%
-                val discount: Float? = (subTotal?.times(20))?.div(100)
+                val discount: Float = (subTotal.times(20)).div(100)
                 binding.discount.text = "-$discount"
-
-                if (subTotal != null && discount != null) {
-                    binding.total.text = (subTotal - discount).toString()
-                }
+                binding.total.text = (subTotal - discount).toString()
             }
         }
     }

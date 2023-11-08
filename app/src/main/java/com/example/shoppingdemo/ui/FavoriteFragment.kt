@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingdemo.R
-import com.example.shoppingdemo.ShoppingViewModel
-import com.example.shoppingdemo.ShoppingViewModelFactory
+import com.example.shoppingdemo.viewmodel.ShoppingViewModel
+import com.example.shoppingdemo.viewmodel.ShoppingViewModelFactory
 import com.example.shoppingdemo.adapter.FavoriteAdapter
 import com.example.shoppingdemo.database.DBHelper
 import com.example.shoppingdemo.databinding.FragmentFavoriteBinding
@@ -40,10 +40,12 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val cartDao = DBHelper.getInstance(requireContext()).cartDao()
         val favoriteDao = DBHelper.getInstance(requireContext()).favoriteDao()
         val shoppingDao = DBHelper.getInstance(requireContext()).shoppingDao()
         val repository = ShoppingRepository(cartDao, favoriteDao, shoppingDao)
+
         viewModel = ViewModelProvider(this,
             ShoppingViewModelFactory(repository))[ShoppingViewModel::class.java]
 
@@ -63,6 +65,7 @@ class FavoriteFragment : Fragment() {
             setHasFixedSize(true)
         }
 
+        // set the all favorite item
         CoroutineScope(Dispatchers.IO).launch {
             val favoriteItem = viewModel.fetchAllFavorite()
             CoroutineScope(Dispatchers.Main).launch {
@@ -76,6 +79,7 @@ class FavoriteFragment : Fragment() {
             }
         }
 
+        // back to previous fragment
         binding.backBtn.setOnClickListener {
             navHostFragment.navController.navigateUp()
         }

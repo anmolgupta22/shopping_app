@@ -8,9 +8,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.shoppingdemo.database.dao.CartDao
 import com.example.shoppingdemo.database.dao.FavoriteDao
 import com.example.shoppingdemo.database.dao.ShoppingDao
-import com.example.shoppingdemo.model.CartItem
-import com.example.shoppingdemo.model.FavoriteItem
-import com.example.shoppingdemo.model.Product
+import com.example.shoppingdemo.data.CartItem
+import com.example.shoppingdemo.data.FavoriteItem
+import com.example.shoppingdemo.data.Product
 
 
 @Database(
@@ -66,6 +66,5 @@ abstract class DBHelper : RoomDatabase() {
                 database.execSQL("INSERT INTO tbl_cart (`id`, `itemCount`, `name`, `icon`, `price`)")
             }
         }
-
     }
 }

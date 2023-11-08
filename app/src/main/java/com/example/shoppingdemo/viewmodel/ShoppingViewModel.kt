@@ -1,11 +1,11 @@
-package com.example.shoppingdemo
+package com.example.shoppingdemo.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.shoppingdemo.data.CartItem
+import com.example.shoppingdemo.data.FavoriteItem
+import com.example.shoppingdemo.data.Product
 import com.example.shoppingdemo.database.ShoppingRepository
-import com.example.shoppingdemo.model.CartItem
-import com.example.shoppingdemo.model.FavoriteItem
-import com.example.shoppingdemo.model.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

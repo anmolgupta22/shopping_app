@@ -1,11 +1,10 @@
 package com.example.shoppingdemo.database
 
 import androidx.room.TypeConverter
-import com.example.shoppingdemo.model.Categories
+import com.example.shoppingdemo.data.Categories
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
-
 
 class Converters {
 

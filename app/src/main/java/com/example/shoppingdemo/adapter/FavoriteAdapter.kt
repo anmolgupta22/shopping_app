@@ -12,8 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.shoppingdemo.R
 import com.example.shoppingdemo.database.DBHelper
 import com.example.shoppingdemo.databinding.FavoriteItemListBinding
-import com.example.shoppingdemo.model.CartItem
-import com.example.shoppingdemo.model.FavoriteItem
+import com.example.shoppingdemo.data.CartItem
+import com.example.shoppingdemo.data.FavoriteItem
 import kotlinx.coroutines.*
 
 class FavoriteAdapter(var context: Context) :

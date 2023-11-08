@@ -15,9 +15,13 @@ import com.example.shoppingdemo.adapter.ProductListAdapter
 import com.example.shoppingdemo.database.DBHelper
 import com.example.shoppingdemo.database.ShoppingRepository
 import com.example.shoppingdemo.databinding.FragmentProductListBinding
-import com.example.shoppingdemo.model.Categories
-import com.example.shoppingdemo.model.Product
+import com.example.shoppingdemo.utils.hide
+import com.example.shoppingdemo.data.Categories
+import com.example.shoppingdemo.data.Product
+import com.example.shoppingdemo.viewmodel.ShoppingViewModel
+import com.example.shoppingdemo.viewmodel.ShoppingViewModelFactory
 import com.example.shoppingdemo.utils.readJSONFromAssets
+import com.example.shoppingdemo.utils.show
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,10 +49,12 @@ class ProductListFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val cartDao = DBHelper.getInstance(requireContext()).cartDao()
         val favoriteDao = DBHelper.getInstance(requireContext()).favoriteDao()
         val shoppingDao = DBHelper.getInstance(requireContext()).shoppingDao()
         val repository = ShoppingRepository(cartDao, favoriteDao, shoppingDao)
+
         viewModel = ViewModelProvider(this,
             ShoppingViewModelFactory(repository))[ShoppingViewModel::class.java]
 
@@ -57,13 +63,16 @@ class ProductListFragment : Fragment(),
             R.id.nav_graph_host_fragment
         ) as NavHostFragment
 
+        //  convert to json to gson
         val json = readJSONFromAssets(requireContext(), "shopping.json")
         val gson = Gson()
         val data = gson.fromJson(json, Product::class.java)
+
         val product: Product = data
         val categories: MutableList<Categories> = product.categories
-
         var productList: Product? = null
+
+        // first time db is null add all json data to db
         CoroutineScope(Dispatchers.IO).launch {
             productList = viewModel.fetchProductList()
             CoroutineScope(Dispatchers.Main).launch {
@@ -100,6 +109,7 @@ class ProductListFragment : Fragment(),
             notifyDataSetChanged()
         }
 
+        // total selected cart item count
         CoroutineScope(Dispatchers.IO).launch {
            val totalItem = viewModel.fetchTotalItemCart() ?: 0
             CoroutineScope(Dispatchers.Main).launch {
@@ -110,14 +120,17 @@ class ProductListFragment : Fragment(),
             }
         }
 
+        // navigate to favorite fragment
         binding.favorite.setOnClickListener {
             navHostFragment.navController.navigate(R.id.favoriteFragment)
         }
 
+        // navigate to cart fragment
         binding.cart.setOnClickListener {
             navHostFragment.navController.navigate(R.id.cartFragment)
         }
 
+        // fetch and set categories data
         binding.checkCategoryList.setOnClickListener {
             binding.showCategoryList.show()
             binding.selectCategoryCl.hide()
@@ -132,17 +145,20 @@ class ProductListFragment : Fragment(),
             }
         }
 
+        // show the categories ui
         binding.showCategoryList.setOnClickListener {
             binding.showCategoryList.hide()
             binding.selectCategoryCl.show()
         }
 
+        // close categories ui
         binding.closeBtn.setOnClickListener {
             binding.selectCategoryCl.show()
             binding.showCategoryList.hide()
         }
     }
 
+    // update the count of the cart item size
     override fun onClicked(size: Int) {
         Log.d(TAG, "onClicked: check $size")
         binding.cartCount.show()

@@ -11,11 +11,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.shoppingdemo.R
 import com.example.shoppingdemo.database.DBHelper
 import com.example.shoppingdemo.databinding.CategoryItemsBinding
-import com.example.shoppingdemo.hide
-import com.example.shoppingdemo.model.CartItem
-import com.example.shoppingdemo.model.FavoriteItem
-import com.example.shoppingdemo.model.Items
-import com.example.shoppingdemo.show
+import com.example.shoppingdemo.utils.hide
+import com.example.shoppingdemo.data.CartItem
+import com.example.shoppingdemo.data.FavoriteItem
+import com.example.shoppingdemo.data.Items
+import com.example.shoppingdemo.utils.show
 import kotlinx.coroutines.*
 
 class ProductListChildAdapter(

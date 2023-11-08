@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppingdemo.databinding.ProductItemsBinding
-import com.example.shoppingdemo.model.Categories
+import com.example.shoppingdemo.data.Categories
 
 class ProductListAdapter(var context: Context, private var cartItemsCount: CartItemsCount) :
     RecyclerView.Adapter<ProductListAdapter.ProductViewHolder>() {
